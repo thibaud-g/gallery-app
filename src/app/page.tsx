@@ -1,5 +1,7 @@
 import { db } from "~/server/db";
 
+export const dynamic = "force-dynamic";
+
 export default async function HomePage() {
   const mockUrl = [
     "https://utfs.io/f/71e2035b-9d7b-48b5-9011-968015b148f0-a48833.png",
