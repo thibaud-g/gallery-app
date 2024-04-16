@@ -20,7 +20,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`font-sans ${inter.variable}`}>{children}</body>
+      <body className={`font-sans ${inter.variable} flex flex-col gap-4`}>
+        <nav className="flex w-full items-center justify-between border-b border-white p-4">
+          <p className="text-2xl font-semibold">Gallery App</p>
+          <p>Disconnect</p>
+        </nav>
+        {children}
+      </body>
     </html>
   );
 }
