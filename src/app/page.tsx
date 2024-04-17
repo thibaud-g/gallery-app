@@ -8,7 +8,7 @@ export const dynamic = "force-dynamic";
 const Images = async () => {
   const images = await getImages();
   return (
-    <div className="flex flex-wrap justify-center gap-4">
+    <div className="flex flex-wrap justify-center gap-4 p-4">
       {images.map((image) => (
         <div key={image.id} className="w-64">
           <Link href={`/img/${image.id}`}>
