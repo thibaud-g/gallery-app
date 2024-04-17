@@ -8,5 +8,5 @@ body {
 
 dialog {
   min-height: 100vh;
-  min-width: 100vh;
+  min-width: 100vw;
 }
