@@ -5,3 +5,8 @@
 body {
   @apply bg-black text-white;
 }
+
+dialog {
+  min-height: 100vh;
+  min-width: 100vh;
+}

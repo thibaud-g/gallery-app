@@ -1,11 +1,11 @@
-export default function PhotoModal({
+import { Modal } from "~/app/@modal/(.)img/[id]/modal";
+import FullPageImageView from "~/components/full-image-page";
+
+export default function PhotoPage({
   params: { id: photoId },
 }: {
   params: { id: string };
 }) {
-  return (
-    <div>
-      <h1>Photo {photoId}</h1>
-    </div>
-  );
+  const idAsNumber = Number(photoId);
+  return <FullPageImageView id={idAsNumber} />;
 }
