@@ -6,16 +6,30 @@ await import("./src/env.js");
 
 /** @type {import("next").NextConfig} */
 const coreConfig = {
+  images: {
+    remotePatterns: [{ hostname: "utfs.io" }],
+  },
   typescript: {
     ignoreBuildErrors: true,
   },
   eslint: {
     ignoreDuringBuilds: true,
   },
-  images: {
-    remotePatterns: [{ hostname: "utfs.io" }],
+
+  async rewrites() {
+    return [
+      {
+        source: "/ingest/static/:path*",
+        destination: "https://us-assets.i.posthog.com/static/:path*",
+      },
+      {
+        source: "/ingest/:path*",
+        destination: "https://us.i.posthog.com/:path*",
+      },
+    ];
   },
 };
+
 import { withSentryConfig } from "@sentry/nextjs";
 
 const config = withSentryConfig(
@@ -26,8 +40,8 @@ const config = withSentryConfig(
 
     // Suppresses source map uploading logs during build
     silent: true,
-    org: "thibaudg",
-    project: "gallery-app",
+    org: "t3gg",
+    project: "t3-gallery-video",
   },
   {
     // For all available options, see:
@@ -39,8 +53,7 @@ const config = withSentryConfig(
     // Transpiles SDK to be compatible with IE11 (increases bundle size)
     transpileClientSDK: true,
 
-    // Uncomment to route browser requests to Sentry through a Next.js rewrite to circumvent ad-blockers.
-    // This can increase your server load as well as your hosting bill.
+    // Routes browser requests to Sentry through a Next.js rewrite to circumvent ad-blockers. (increases server load)
     // Note: Check that the configured route will not match with your Next.js middleware, otherwise reporting of client-
     // side errors will fail.
     tunnelRoute: "/monitoring",
@@ -60,5 +73,3 @@ const config = withSentryConfig(
 );
 
 export default config;
-
-// Injected content via Sentry wizard below
